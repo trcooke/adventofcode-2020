@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class Day01Part1 {
+public class Day01 {
 
 
 
@@ -54,7 +54,7 @@ public class Day01Part1 {
     }
 
     public static void main(String[] args) throws IOException {
-        Day01Part1 solution = new Day01Part1();
+        Day01 solution = new Day01();
         System.out.println(solution.part1());
         System.out.println(solution.part2());
     }
