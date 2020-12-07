@@ -2,6 +2,8 @@ package com.trcooke.adventofcode2020;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
@@ -40,4 +42,17 @@ public class Day02Test {
         Day02 day02 = new Day02();
         assertThat(day02.isValidPart2Policy("2-9 c: ccccccccc"), is(false));
     }
+
+    Day02 day02 = new Day02();
+
+    @Test
+    public void part1CoveringTest() throws IOException {
+        assertThat(day02.part1(), is(445));
+    }
+
+    @Test
+    public void part2CoveringTest() throws IOException {
+        assertThat(day02.part2(), is(491));
+    }
+
 }

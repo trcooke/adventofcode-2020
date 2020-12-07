@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Day06 {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay06");
         Set<Character> yesQuestions = new HashSet<>();
         int sumOfYesQuestions = 0;
@@ -30,7 +30,7 @@ public class Day06 {
         return sumOfYesQuestions;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay06");
         int sumOfYesQuestions = 0;
         List<Set<Character>> personYesQuestions = new ArrayList<>();

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Day03 {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay03");
         int positionToTheRight = 0;
         int treeCount = 0;
@@ -25,7 +25,7 @@ public class Day03 {
         return treeCount;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay03");
         ArrayList<String> slopeGrid = new ArrayList<>();
         for (String line; (line = reader.readLine()) != null;) {

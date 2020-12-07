@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class Day04 {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay04");
         Set<Field> requiredFields = new HashSet<>(Arrays.asList(
                 Field.BYR,
@@ -43,7 +43,7 @@ public class Day04 {
         return valid;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay04");
         Set<Field> requiredFields = new HashSet<>(Arrays.asList(
                 Field.BYR,

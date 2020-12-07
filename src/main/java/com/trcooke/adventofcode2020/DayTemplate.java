@@ -5,40 +5,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
-public class Day01 {
+public class DayTemplate {
 
-    int part1() throws IOException {
+    private int part1() throws IOException {
         BufferedReader reader = getInput("InputDay01");
-        ArrayList<Integer> input = new ArrayList<>();
         for (String line; (line = reader.readLine()) != null;) {
-            input.add(Integer.valueOf(line));
-        }
-        for (int i = 0; i < input.size(); i++) {
-            for (int j = i + 1; j < input.size(); j++) {
-                if (input.get(i) + input.get(j) == 2020) {
-                    return input.get(i) * input.get(j);
-                }
-            }
         }
         return 0;
     }
 
-    int part2() throws IOException {
+    private int part2() throws IOException {
         BufferedReader reader = getInput("InputDay01");
-        ArrayList<Integer> input = new ArrayList<>();
         for (String line; (line = reader.readLine()) != null;) {
-            input.add(Integer.valueOf(line));
-        }
-        for (int i = 0; i < input.size(); i++) {
-            for (int j = i + 1; j < input.size(); j++) {
-                for (int k = j + 1; k < input.size(); k++) {
-                    if (input.get(i) + input.get(j) + input.get(k) == 2020) {
-                        return input.get(i) * input.get(j) * input.get(k);
-                    }
-                }
-            }
         }
         return 0;
     }
@@ -52,7 +31,7 @@ public class Day01 {
     }
 
     public static void main(String[] args) throws IOException {
-        Day01 solution = new Day01();
+        DayTemplate solution = new DayTemplate();
         System.out.println(solution.part1());
         System.out.println(solution.part2());
     }

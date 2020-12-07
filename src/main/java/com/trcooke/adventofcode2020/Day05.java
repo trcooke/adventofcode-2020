@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class Day05 {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay05");
         int highestSeatId = 0;
         for (String line; (line = reader.readLine()) != null;) {
@@ -24,7 +24,7 @@ public class Day05 {
         return highestSeatId;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay05");
         Set<Integer> allTakenSeats = new HashSet<>();
         for (String line; (line = reader.readLine()) != null;) {

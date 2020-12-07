@@ -7,23 +7,17 @@ import java.io.IOException;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class Day05Test {
+public class Day01Test {
 
-    Day05 day05 = new Day05();
-
-    @Test
-    public void boardingPassExample1() {
-        assertThat(day05.decodeBoardingPass("FBFBBFFRLR"), is(new Day05.Seat(44, 5)));
-    }
+    Day01 day01 = new Day01();
 
     @Test
     public void part1CoveringTest() throws IOException {
-        assertThat(day05.part1(), is(883));
+        assertThat(day01.part1(), is(786811));
     }
 
     @Test
     public void part2CoveringTest() throws IOException {
-        assertThat(day05.part2(), is(532));
+        assertThat(day01.part2(), is(199068980));
     }
-
 }

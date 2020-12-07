@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 public class Day02 {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay02");
         int countValid = 0;
         for (String line; (line = reader.readLine()) != null;) {
@@ -38,7 +38,7 @@ public class Day02 {
         return sortedPassword.contains(policyChar) && charCount >= policyMinCount && charCount <= policyMaxCount;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay02");
         int countValid = 0;
         for (String line; (line = reader.readLine()) != null;) {
