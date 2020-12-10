@@ -41,7 +41,7 @@ public class Day10 {
         }
         adaptors.sort(Integer::compareTo);
         Map<Integer, Long> combos = new HashMap<>();
-        Integer max = adaptors.stream().max(Integer::compareTo).get();
+        Integer max = adaptors.get(adaptors.size() - 1);
         combos.put(max + 3, 1L);
         for (int i = adaptors.size() - 1; i >= 0; i--) {
             Integer adaptor = adaptors.get(i);
@@ -51,7 +51,7 @@ public class Day10 {
             }
             combos.put(adaptor, combosOfThis);
         }
-        Integer min = adaptors.stream().min(Integer::compareTo).get();
+        Integer min = adaptors.get(0);
         return combos.get(min);
     }
 
