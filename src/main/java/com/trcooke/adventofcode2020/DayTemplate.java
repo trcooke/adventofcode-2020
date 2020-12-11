@@ -8,14 +8,14 @@ import java.nio.charset.StandardCharsets;
 
 public class DayTemplate {
 
-    private int part1() throws IOException {
+    int part1() throws IOException {
         BufferedReader reader = getInput("InputDay01");
         for (String line; (line = reader.readLine()) != null;) {
         }
         return 0;
     }
 
-    private int part2() throws IOException {
+    int part2() throws IOException {
         BufferedReader reader = getInput("InputDay01");
         for (String line; (line = reader.readLine()) != null;) {
         }
