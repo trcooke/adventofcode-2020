@@ -37,7 +37,7 @@ public class Day13 {
     }
 
     long part2() throws IOException {
-        BufferedReader reader = getInput("InputDay13");
+        BufferedReader reader = getInput("InputDay13Test");
         List<String> input = new ArrayList<>();
         for (String line; (line = reader.readLine()) != null;) {
             input.add(line);

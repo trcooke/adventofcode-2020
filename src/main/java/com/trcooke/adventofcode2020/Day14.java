@@ -14,7 +14,7 @@ public class Day14 {
         long maskTo1 = 0;
         long maskTo0 = 0;
         Map<Integer, Long> memory = new HashMap<>();
-        for (String line; (line = reader.readLine()) != null;) {
+        for (String line; (line = reader.readLine()) != null; ) {
             if (line.startsWith("mask")) {
                 maskTo1 = Long.parseLong(line.split(" = ")[1].replaceAll("X", "0"), 2);
                 maskTo0 = Long.parseLong(line.split(" = ")[1].replaceAll("X", "1"), 2);
@@ -30,41 +30,38 @@ public class Day14 {
     }
 
     Long part2() throws IOException {
-        BufferedReader reader = getInput("InputDay14Test2");
+        BufferedReader reader = getInput("InputDay14");
         String maskOriginal = "";
-        List<String> masks = new ArrayList<>();
-        Map<Integer, Long> memory = new HashMap<>();
-        for (String line; (line = reader.readLine()) != null;) {
+        Map<Long, Long> memory = new HashMap<>();
+        for (String line; (line = reader.readLine()) != null; ) {
             if (line.startsWith("mask")) {
                 maskOriginal = line.split(" = ")[1];
-                masks.clear();
-                masks.add("");
-                System.out.println(maskOriginal);
-                for (char c : maskOriginal.toCharArray()) {
-                    List<String> newMasks = new ArrayList<>();
-                    List<String> oldMasks = new ArrayList<>();
-                    for (String mask : masks) {
-                        oldMasks.add(mask);
-                        if (c == 'X') {
-                            newMasks.add(mask + "1");
-                            newMasks.add(mask + "0");
-                        } else {
-                            newMasks.add(mask + c);
-                        }
-                    }
-                    masks.removeAll(oldMasks);
-                    masks.addAll(newMasks);
-                }
             } else {
                 long value = Long.parseLong(line.split(" = ")[1]);
-                for (String mask : masks) {
-                    int memLoc = Integer.parseInt(line.split(" = ")[0].replaceAll("[mem\\[\\]]", ""));
-                    long maskTo1 = Long.parseLong(mask, 2);
-                    System.out.printf("%s\n", Integer.toBinaryString(memLoc));
-                    System.out.println(mask);
-                    memLoc ^= maskTo1;
-                    System.out.println(Integer.toBinaryString(memLoc) + " " + memLoc);
-                    memory.put(memLoc, value);
+                int memLoc = Integer.parseInt(line.split(" = ")[0].replaceAll("[mem\\[\\]]", ""));
+                char[] maskBinary = maskOriginal.toCharArray();
+                char[] memLocBinary = String.format("%36s\n", Integer.toBinaryString(memLoc)).replaceAll(" ", "0").toCharArray();
+                List<String> memLocs = new ArrayList<>();
+                memLocs.add("");
+                for (int i = 0, charArrayLength = maskBinary.length; i < charArrayLength; i++) {
+                    char maskChar = maskBinary[i];
+                    char memChar = memLocBinary[i];
+                    List<String> newMasks = new ArrayList<>();
+                    List<String> oldMasks = new ArrayList<>();
+                    for (String mem : memLocs) {
+                        oldMasks.add(mem);
+                        if (maskChar == 'X') {
+                            newMasks.add(mem + "1");
+                            newMasks.add(mem + "0");
+                        } else {
+                            newMasks.add(mem + (Integer.parseInt("" + maskChar) | Integer.parseInt("" + memChar)));
+                        }
+                    }
+                    memLocs.removeAll(oldMasks);
+                    memLocs.addAll(newMasks);
+                }
+                for (String loc : memLocs) {
+                    memory.put(Long.parseLong(loc, 2), value);
                 }
             }
         }
