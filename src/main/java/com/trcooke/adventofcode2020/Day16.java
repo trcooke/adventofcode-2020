@@ -63,7 +63,7 @@ public class Day16 {
         return invalidValues.stream().reduce(Integer::sum).get();
     }
 
-    int part2() throws IOException {
+    long part2() throws IOException {
         BufferedReader reader = getInput("InputDay16");
         List<Rule> rules = new ArrayList<>();
         List<Integer> yourTicketValues = new ArrayList<>();
@@ -136,9 +136,30 @@ public class Day16 {
                 fieldsByIndex.put(i, existingRules);
             }
         }
-        
-        System.out.println(fieldsByIndex);
-        return 0;
+        Map<Integer, String> finalFields = new HashMap<>();
+        do {
+            for (Integer i : fieldsByIndex.keySet()) {
+                if (fieldsByIndex.get(i).size() == 1) {
+                    String val = fieldsByIndex.get(i).stream().findFirst().get();
+                    finalFields.put(i, val);
+                    fieldsByIndex.remove(i);
+                    for (Integer index : fieldsByIndex.keySet()) {
+                        fieldsByIndex.get(index).remove(val);
+                    }
+                    break;
+                }
+            }
+        } while (!fieldsByIndex.isEmpty());
+        System.out.println(finalFields);
+        long output = 1;
+        for (Integer fieldIndex : finalFields.keySet()) {
+            if (finalFields.get(fieldIndex).startsWith("departure")) {
+                System.out.println(yourTicketValues.get(fieldIndex));
+                output *= yourTicketValues.get(fieldIndex);
+            }
+        }
+
+        return output;
     }
 
     private BufferedReader getInput(String inputFile) {
